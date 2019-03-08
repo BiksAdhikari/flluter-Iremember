@@ -1,15 +1,22 @@
 import 'package:flutter/material.dart';
 class ItemDetails extends StatelessWidget {
   final Map item;
-  const ItemDetails({Key key, this.item}) : super(key: key);
+  final Function delete;
+  const ItemDetails({Key key, this.item,this.delete}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.lightBlue,
         title: Text(item["title"]),
-      ),
-      body: SingleChildScrollView(
+        actions: <Widget>[
+          IconButton(icon: Icon(Icons.delete),
+          onPressed: (){
+            delete(item);
+          },)
+        ],
+      ),      body: SingleChildScrollView(
         padding: EdgeInsets.all(20.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -21,7 +28,7 @@ class ItemDetails extends StatelessWidget {
               ),
               decoration: BoxDecoration(
                   image: DecorationImage(
-                image: FileImage(
+                image: AssetImage(
                   item["img"],
                 ),
               )),

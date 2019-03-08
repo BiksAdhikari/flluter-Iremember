@@ -1,5 +1,5 @@
 import 'dart:io';
-//import './home.dart';
+//mport './home.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -14,7 +14,7 @@ class _AddPageState extends State<AddPage> {
  File _image;
  String title;
  String description;
-  Future _getImage(ImageSource source) async {
+   _getImage(ImageSource source) async {
     var img = await ImagePicker.pickImage(source:source);
     if(img != null) {
       setState(() {
